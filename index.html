@@ -17,10 +17,51 @@
         h1 {
             font-size: 3em;
             color: #333;
+            display: inline-block;
+        }
+
+        /* Wavy text effect */
+        h1 span {
+            display: inline-block;
+            animation: wave 2s infinite ease-in-out, fontChange 5s infinite;
+            animation-delay: calc(var(--i) * 0.1s); /* Delays each letter */
+        }
+
+        /* Font cycling animation */
+        @keyframes fontChange {
+            0% { font-family: Arial, sans-serif; }
+            10% { font-family: 'Courier New', Courier, monospace; }
+            20% { font-family: 'Georgia', serif; }
+            30% { font-family: 'Times New Roman', Times, serif; }
+            40% { font-family: 'Comic Sans MS', cursive, sans-serif; }
+            50% { font-family: 'Impact', Charcoal, sans-serif; }
+            60% { font-family: 'Lucida Console', Monaco, monospace; }
+            70% { font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; }
+            80% { font-family: 'Trebuchet MS', Helvetica, sans-serif; }
+            90% { font-family: 'Verdana', Geneva, sans-serif; }
+            100% { font-family: Arial, sans-serif; } /* Loops back to Arial */
+        }
+
+        /* Wave effect animation */
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-10px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <h1>Yeah, yeah, this website is under construction!</h1>
+    <h1>
+        <!-- Each letter is wrapped in a span with an index for delay -->
+        <span style="--i: 1">Y</span><span style="--i: 2">e</span><span style="--i: 3">a</span><span style="--i: 4">h</span><span style="--i: 5">,</span>
+        <span style="--i: 6"> </span><span style="--i: 7">y</span><span style="--i: 8">e</span><span style="--i: 9">a</span><span style="--i: 10">h</span><span style="--i: 11">,</span>
+        <span style="--i: 12"> </span><span style="--i: 13">t</span><span style="--i: 14">h</span><span style="--i: 15">i</span><span style="--i: 16">s</span>
+        <span style="--i: 17"> </span><span style="--i: 18">w</span><span style="--i: 19">e</span><span style="--i: 20">b</span><span style="--i: 21">s</span><span style="--i: 22">i</span><span style="--i: 23">t</span><span style="--i: 24">e</span>
+        <span style="--i: 25"> </span><span style="--i: 26">i</span><span style="--i: 27">s</span>
+        <span style="--i: 28"> </span><span style="--i: 29">u</span><span style="--i: 30">n</span><span style="--i: 31">d</span><span style="--i: 32">e</span><span style="--i: 33">r</span>
+        <span style="--i: 34"> </span><span style="--i: 35">c</span><span style="--i: 36">o</span><span style="--i: 37">n</span><span style="--i: 38">s</span><span style="--i: 39">t</span><span style="--i: 40">r</span><span style="--i: 41">u</span><span style="--i: 42">c</span><span style="--i: 43">t</span><span style="--i: 44">i</span><span style="--i: 45">o</span><span style="--i: 46">n</span><span style="--i: 47">!</span>
+    </h1>
 </body>
 </html>
