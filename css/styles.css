@@ -1,57 +1,98 @@
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Space Mono', monospace;
     margin: 0;
-    background-color: #f4f4f4;
+    padding: 0;
+    line-height: 1.6;
+    color: #111; /* Almost black */
+    background-color: #fff; /* White background */
+    display: flex;
+    text-transform: lowercase; /* All text lowercase */
+}
+
+header {
+    background-color: #fff; /* White background */
+    color: #111; /* Almost black */
+    text-align: left;
+    padding: 1rem;
+    width: 220px; /* Adjusted width to prevent wrapping */
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 h1 {
-    font-size: 1.5em;
-    color: #333;
-    display: inline-block;
-    animation: fontChange 5s infinite; /* Entire font changes */
+    margin: 0;
+    font-size: 1.2rem; /* Reduced font size */
+    font-weight: 400; /* Lighter font weight */
+    text-transform: lowercase; /* All text lowercase */
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
-h1 span {
-    display: inline-block;
-    animation: wave 2s infinite ease-in-out;
-    animation-delay: calc(var(--i) * 0.1s - 1s); /* Initial offset for mid-wave */
-    animation-fill-mode: both; /* Preserve animation state */
+nav {
+    background-color: #fff; /* White background */
+    padding: 1rem;
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 60px; /* Adjust for header height */
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-/* Font cycling for the entire sentence */
-@keyframes fontChange {
-    0% { font-family: Arial, sans-serif; }
-    5% { font-family: 'Courier New', Courier, monospace; }
-    10% { font-family: 'Georgia', serif; }
-    15% { font-family: 'Times New Roman', Times, serif; }
-    20% { font-family: 'Comic Sans MS', cursive, sans-serif; }
-    25% { font-family: 'Impact', Charcoal, sans-serif; }
-    30% { font-family: 'Lucida Console', Monaco, monospace; }
-    35% { font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; }
-    40% { font-family: 'Trebuchet MS', Helvetica, sans-serif; }
-    45% { font-family: 'Verdana', Geneva, sans-serif; }
-    50% { font-family: 'Arial Black', Gadget, sans-serif; }
-    55% { font-family: 'Tahoma', Geneva, sans-serif; }
-    60% { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif; }
-    65% { font-family: 'Optima', sans-serif; }
-    70% { font-family: 'Garamond', serif; }
-    75% { font-family: 'Futura', sans-serif; }
-    80% { font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
-    85% { font-family: 'Perpetua', serif; }
-    90% { font-family: 'Copperplate', 'Copperplate Gothic Light', sans-serif; }
-    95% { font-family: 'Brush Script MT', cursive; }
-    100% { font-family: Arial, sans-serif; } /* Loops back to Arial */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
-/* Wave effect for individual letters */
-@keyframes wave {
-    0% { transform: translateY(0); }
-    25% { transform: translateY(-10px); }
-    50% { transform: translateY(0); }
-    75% { transform: translateY(10px); }
-    100% { transform: translateY(0); }
+nav ul li {
+    margin: 1rem 0;
+}
+
+nav ul li a {
+    color: #111; /* Almost black */
+    text-decoration: none;
+    font-family: 'Space Mono', monospace; /* Primary font */
+    font-size: 0.9rem; /* Reduced font size */
+}
+
+main {
+    margin-left: 220px; /* Adjust for nav width */
+    padding: 2rem;
+    margin-top: 60px; /* Adjust for header height */
+    width: calc(100% - 220px);
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    color: #111; /* Almost black */
+    font-size: 1.2rem; /* Reduced font size */
+    font-family: 'Space Mono', monospace; /* Primary font */
+    text-transform: lowercase; /* All text lowercase */
+}
+
+p {
+    font-family: 'Open Sans', sans-serif; /* Secondary font */
+    font-size: 0.9rem; /* Reduced font size */
+}
+
+footer {
+    background-color: #fff; /* White background */
+    color: #111; /* Almost black */
+    text-align: center;
+    padding: 1rem 0;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 220px);
+    margin-left: 220px; /* Adjust for nav width */
+    text-transform: lowercase; /* All text lowercase */
+    font-family: 'Open Sans', sans-serif; /* Secondary font */
+    font-size: 0.9rem; /* Reduced font size */
 }
