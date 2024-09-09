@@ -190,3 +190,26 @@ button {
 button:hover {
     background-color: #333;
 }
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    aspect-ratio: 1 / 1;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left; /* Change text alignment to left */
+}
+
+.project-card h3 {
+    text-align: left; /* Ensure headers are also left-aligned */
+}

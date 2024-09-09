@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(url)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
                 }
                 return response.text();
             })
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
-                main.innerHTML = '<h2>Error</h2><p>There was an error loading the content. Please try again later.</p>';
+                main.innerHTML = `<h2>Error</h2><p>There was an error loading the content: ${error.message}. Please try again later.</p>`;
             });
     }
 
