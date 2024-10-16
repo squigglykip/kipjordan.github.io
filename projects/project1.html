@@ -1,212 +1,200 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1</title>
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            },
-            svg: {
-                fontCache: 'global'
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
-<body>
-    <section id="project1">
-        <h1>Introduction</h1>
-        <p>Welcome to an exploration of advanced text analysis techniques. In this article, we delve into the
-            sophisticated methodologies used to extract valuable insights from feedback data. If you are curious
-            about how machines process and interpret textual information, this guide will provide a clear and
-            professional overview. Let's embark on this journey to uncover the mechanisms behind our analysis.</p>
+<section id="project1">
+    <h1>Introduction</h1>
+    <p>Welcome to an exploration of advanced text analysis techniques. In this article, we delve into the
+        sophisticated methodologies used to extract valuable insights from feedback data. If you are curious
+        about how machines process and interpret textual information, this guide will provide a clear and
+        professional overview. Let's embark on this journey to uncover the mechanisms behind our analysis.</p>
 
-        <p>These methodologies, including TF-IDF (Term Frequency-Inverse Document Frequency) and k-means clustering,
-            are widely used across various industries. In the tech sector, they help in enhancing search engine
-            algorithms and improving recommendation systems. In marketing, they enable sentiment analysis of
-            customer feedback to gauge public perception of products and services. In healthcare, these techniques
-            can analyse patient feedback to improve service delivery and patient satisfaction. Financial services
-            utilise these methods to detect fraudulent activities by analysing transaction descriptions and customer
-            communications.</p>
+    <p>These methodologies, including TF-IDF (Term Frequency-Inverse Document Frequency) and k-means clustering,
+        are widely used across various industries. In the tech sector, they help in enhancing search engine
+        algorithms and improving recommendation systems. In marketing, they enable sentiment analysis of
+        customer feedback to gauge public perception of products and services. In healthcare, these techniques
+        can analyse patient feedback to improve service delivery and patient satisfaction. Financial services
+        utilise these methods to detect fraudulent activities by analysing transaction descriptions and customer
+        communications.</p>
 
-        <p>By integrating these powerful tools, we can efficiently process large volumes of text data, uncovering
-            patterns and insights that inform strategic decisions and drive continuous improvement.</p>
+    <p>By integrating these powerful tools, we can efficiently process large volumes of text data, uncovering
+        patterns and insights that inform strategic decisions and drive continuous improvement.</p>
 
-        <h2>Why We Are Doing This</h2>
-        <p>Our objective was to rapidly identify key themes from feedback data to assist the Culture team in developing new customer and colleague behaviours. 
-        Given the tight deadline of one week, we had limited time to create a highly robust solution. Our initial goal was to develop a comprehensive NLP solution, but we encountered significant challenges:</p>
-        <ul>
-            <li>Extensive domain knowledge is required to train an NLP function effectively, a process that could take months.</li>
-            <li>The business language, while positive and respectful on the surface, often contains underlying negative sentiment, complicating sentiment analysis.</li>
-        </ul>
-         
-        <p>Despite these challenges, we focused on delivering actionable insights within the given timeframe. With more time, we could enhance our solution by incorporating deeper domain-specific training for the NLP model and refining sentiment analysis to better capture the nuances of business language. 
-            These improvements would allow for even more precise and meaningful analysis, driving better-informed decisions and strategies.</p>
+    <h2>Why We Are Doing This</h2>
+    <p>Our objective was to rapidly identify key themes from feedback data to assist the Culture team in developing new
+        customer and colleague behaviours.
+        Given the tight deadline of one week, we had limited time to create a highly robust solution. Our initial goal
+        was to develop a comprehensive NLP solution, but we encountered significant challenges:</p>
+    <ul>
+        <li>Extensive domain knowledge is required to train an NLP function effectively, a process that could take
+            months.</li>
+        <li>The business language, while positive and respectful on the surface, often contains underlying negative
+            sentiment, complicating sentiment analysis.</li>
+    </ul>
 
-        <p>Ultimately, these insights should be viewed as a starting point for further investigation and discussion, rather than definitive conclusions. We recommend using this analysis in conjunction with other qualitative and quantitative data sources for a more comprehensive understanding.</p>
+    <p>Despite these challenges, we focused on delivering actionable insights within the given timeframe. With more
+        time, we could enhance our solution by incorporating deeper domain-specific training for the NLP model and
+        refining sentiment analysis to better capture the nuances of business language.
+        These improvements would allow for even more precise and meaningful analysis, driving better-informed decisions
+        and strategies.</p>
 
-        <br>
-        <h2>Understanding the Basics: TF-IDF</h2>
-        <p>When analysing a collection of documents - in this scenario 'Colleague Feedback', identifying the most significant
-            terms is crucial. This is
-            where TF-IDF (Term Frequency-Inverse Document Frequency) comes into play. Despite its complex name, the
-            concept is straightforward.</p>
+    <p>Ultimately, these insights should be viewed as a starting point for further investigation and discussion, rather
+        than definitive conclusions. We recommend using this analysis in conjunction with other qualitative and
+        quantitative data sources for a more comprehensive understanding.</p>
 
-        <p><strong>Term Frequency (TF):</strong> This metric measures the frequency of a word within a document. For
-            example, counting how often "customer" appears in a report.</p>
+    <br>
+    <h2>Understanding the Basics: TF-IDF</h2>
+    <p>When analysing a collection of documents - in this scenario 'Colleague Feedback', identifying the most
+        significant
+        terms is crucial. This is
+        where TF-IDF (Term Frequency-Inverse Document Frequency) comes into play. Despite its complex name, the
+        concept is straightforward.</p>
 
-        <p><strong>Inverse Document Frequency (IDF):</strong> This component assesses the uniqueness of a word
-            across all documents. If "customer" is ubiquitous across all reports, its uniqueness diminishes. The
-            formula is as follows:</p>
-        <p>
-            \[ \text{IDF}(t) = \log\left(\frac{N}{\text{DF}(t)}\right) \]
-        </p>
-        <p>Where \(N\) is the total number of documents and \(\text{DF}(t)\) is the number of documents containing
-            the term.</p>
+    <p><strong>Term Frequency (TF):</strong> This metric measures the frequency of a word within a document. For
+        example, counting how often "customer" appears in a report.</p>
 
-        <p><strong>TF-IDF Weight:</strong> By combining TF and IDF, we obtain a weight that signifies the importance
-            of a word in a specific document relative to the entire collection. Higher scores indicate more
-            significant terms.</p>
+    <p><strong>Inverse Document Frequency (IDF):</strong> This component assesses the uniqueness of a word
+        across all documents. If "customer" is ubiquitous across all reports, its uniqueness diminishes. The
+        formula is as follows:</p>
+    <p>
+        \[ \text{IDF}(t) = \log\left(\frac{N}{\text{DF}(t)}\right) \]
+    </p>
+    <p>Where \(N\) is the total number of documents and \(\text{DF}(t)\) is the number of documents containing
+        the term.</p>
 
-        <br>
-        <h2>Next Up: The Role of Stemming and Lemmatisation</h2>
-        <p>Stemming and lemmatisation are techniques used to reduce words to their base forms, simplifying the
-            analysis process. Consider words like "organise," "organises," and "organising." These methods help in
-            grouping them together for more effective analysis.</p>
+    <p><strong>TF-IDF Weight:</strong> By combining TF and IDF, we obtain a weight that signifies the importance
+        of a word in a specific document relative to the entire collection. Higher scores indicate more
+        significant terms.</p>
 
-        <p><strong>Stemming:</strong> This technique truncates words to their root forms. For instance, "running"
-            becomes "run."</p>
+    <br>
+    <h2>Next Up: The Role of Stemming and Lemmatisation</h2>
+    <p>Stemming and lemmatisation are techniques used to reduce words to their base forms, simplifying the
+        analysis process. Consider words like "organise," "organises," and "organising." These methods help in
+        grouping them together for more effective analysis.</p>
 
-        <p><strong>Lemmatisation:</strong> This method is more refined, using vocabulary and morphological analysis
-            to convert words to their dictionary form. Thus, "running" becomes "run," and "better" becomes "good."
-        </p>
-        
-        <br>
-        <h2>Our Approach: From Raw Data to Insights</h2>
-        <p>We started by loading our datasets, which included feedback comments and verbatim responses. After
-            combining them into a single dataset, we pre-processed the text to ensure it was in a suitable format.
-            Stemming and lemmatisation were then applied to both our keywords and the text data.</p>
+    <p><strong>Stemming:</strong> This technique truncates words to their root forms. For instance, "running"
+        becomes "run."</p>
 
-        <h3>Pre-processing and Filtering</h3>
-        <p>To enhance the accuracy of our analysis, we filtered the data to retain only relevant comments. We
-            employed fuzzy matching to verify if any keyword or phrase from our predefined list appeared in the
-            text.</p>
-        
-        <h3>Visualisation</h3>
-        <p>Visualising the frequency of keywords and phrases allowed us to identify which terms were most prominent.
-            Bar charts and word clouds provided a clear view of term distribution within our data.</p>
-        <p><img src="../images/article-images/early-nlp-for-culture/keyword_count.png" alt="Keyword Count"></p>
+    <p><strong>Lemmatisation:</strong> This method is more refined, using vocabulary and morphological analysis
+        to convert words to their dictionary form. Thus, "running" becomes "run," and "better" becomes "good."
+    </p>
 
-        <p><img src="../images/article-images/early-nlp-for-culture/wordcloud.png" alt="WordCloud"></p>
-        
-        <br>
-        <h2>Clustering Analysis: Grouping Similar Comments</h2>
-        <p>We then vectorised the text using TF-IDF and applied k-means clustering to group similar comments.
-            Selecting five clusters enabled us to categorise the feedback effectively. To visualise these clusters,
-            we used PCA for dimensionality reduction and created scatter plots.</p>
-        <p><img src="../images/article-images/early-nlp-for-culture/scatterplot_clusters.png" alt="WordCloud"></p>
+    <br>
+    <h2>Our Approach: From Raw Data to Insights</h2>
+    <p>We started by loading our datasets, which included feedback comments and verbatim responses. After
+        combining them into a single dataset, we pre-processed the text to ensure it was in a suitable format.
+        Stemming and lemmatisation were then applied to both our keywords and the text data.</p>
 
-        <h3>Extracting Insights: Top Terms and Representative Texts</h3>
-        <p>For each cluster, we identified the top terms and representative texts to understand the common themes.
-            This step was essential for grasping the essence of each cluster.</p>
-        <p><img src="../images/article-images/early-nlp-for-culture/phrase_count.png" alt="WordCloud"></p>
-        
-        <p>A quick summarisation, on what some of the clusters, lean to;</p>
+    <h3>Pre-processing and Filtering</h3>
+    <p>To enhance the accuracy of our analysis, we filtered the data to retain only relevant comments. We
+        employed fuzzy matching to verify if any keyword or phrase from our predefined list appeared in the
+        text.</p>
 
-            <ul>
-                <li>Cluster 3 highlights potential decision-making inefficiencies and varied views on leadership dynamics.</li>
-                <li>Cluster 2 appears to focuses on possible barriers to effective decision-making, including bureaucratic processes and lack of clarity.</li>
-                <li>Cluster 0 centers on organisational structure questions and the need for a more customer-focused approach.</li>
-                <li>Cluster 1 touches on performance and accountability, though there is less specificity (language and responses).</li>
-            </ul>
-            
-        <p><img src="../images/article-images/early-nlp-for-culture/cluster_wordclouds.png" alt="WordCloud"></p>
+    <h3>Visualisation</h3>
+    <p>Visualising the frequency of keywords and phrases allowed us to identify which terms were most prominent.
+        Bar charts and word clouds provided a clear view of term distribution within our data.</p>
+    <p><img src="../img/work/nlp_pca/keyword_count.png" alt="Keyword Count"></p>
 
-        <br>
-        <h2>Final Output: Connecting the Dots</h2>
-        <p>We added a new column to our dataset to indicate related keywords or phrases for each comment. Finally,
-            we saved the processed data, including clusters and related terms, to a CSV file for further analysis.
-        </p>
+    <p><img src="../img/work/nlp_pca/wordcloud.png" alt="WordCloud"></p>
 
-        <br>
-        <h2>Conclusion</h2>
-        <p>In conclusion, we have explored the application of TF-IDF, stemming, lemmatisation, and clustering to
-            derive meaningful patterns from feedback data. This process not only organises vast amounts of text but
-            also provides valuable insights that can drive decision-making.</p>
+    <br>
+    <h2>Clustering Analysis: Grouping Similar Comments</h2>
+    <p>We then vectorised the text using TF-IDF and applied k-means clustering to group similar comments.
+        Selecting five clusters enabled us to categorise the feedback effectively. To visualise these clusters,
+        we used PCA for dimensionality reduction and created scatter plots.</p>
+    <p><img src="../img/work/nlp_pca/scatterplot_clusters.png" alt="Scatterplot Clusters"></p>
 
-        <br>
-        <h2>Achievements</h2>
-        <p><strong>Automated Keyword Extraction:</strong> We utilised TF-IDF to automatically extract and weight
-            important keywords and phrases from the survey responses. This enabled us to identify terms that are
-            particularly significant within the context of our dataset.</p>
+    <h3>Extracting Insights: Top Terms and Representative Texts</h3>
+    <p>For each cluster, we identified the top terms and representative texts to understand the common themes.
+        This step was essential for grasping the essence of each cluster.</p>
+    <p><img src="../img/work/nlp_pca/phrase_count.png" alt="Phrase Count"></p>
 
-        <p><strong>High-Dimensional Document Clustering:</strong> Using k-means clustering, a powerful machine
-            learning algorithm, we grouped the survey responses into distinct clusters based on content similarity.
-            This clustering reveals underlying themes and patterns in the feedback, providing a clear, organised
-            view of the data.</p>
-        
-        <br>
-        <h2>Technical Impressions</h2>
-        <p><strong>Advanced Analytics:</strong> By employing TF-IDF and k-means clustering, we applied sophisticated
-            algorithms that surpass simple keyword searches. These methods ensure that the most relevant and
-            impactful phrases are highlighted, offering a deeper understanding of the feedback.</p>
+    <p>A quick summarisation, on what some of the clusters, lean to;</p>
 
-        <p><strong>High-Dimensional Space:</strong> Each document is represented as a vector in a high-dimensional
-            space, with each dimension corresponding to a term in our corpus. The k-means algorithm navigates this
-            complex space to identify clusters of closely related documents. This involves calculating the Euclidean
-            distance between document vectors in this multi-dimensional space to determine their similarity.</p>
+    <ul>
+        <li>Cluster 3 highlights potential decision-making inefficiencies and varied views on leadership dynamics.</li>
+        <li>Cluster 2 appears to focuses on possible barriers to effective decision-making, including bureaucratic
+            processes and lack of clarity.</li>
+        <li>Cluster 0 centers on organisational structure questions and the need for a more customer-focused approach.
+        </li>
+        <li>Cluster 1 touches on performance and accountability, though there is less specificity (language and
+            responses).</li>
+    </ul>
 
-        <br>
-        <h2>Effort Comparison</h2>
-        <p>To put this into perspective, imagine attempting this analysis manually in Excel:</p>
-        <ul>
-            <li><strong>Data Preparation:</strong> A single individual would need to meticulously clean and
-                preprocess each survey response, ensuring text format consistency. This alone would be a monumental
-                task.</li>
-            <li><strong>Keyword Identification:</strong> Manually identifying and weighting keywords in each
-                document would require reading through every response, noting the frequency of each term, and then
-                calculating its relative importance.</li>
-            <li><strong>Manual Clustering:</strong> Grouping similar documents based on content would involve
-                comparing each survey response against every other response, assessing similarity, and then
-                organising them into clusters. This process would be extraordinarily time-consuming and prone to
-                errors.</li>
-        </ul>
+    <p><img src="../img/work/nlp_pca/cluster_wordclouds.png" alt="Cluster WordClouds"></p>
 
-        <br>
-        <h2>Conclusion</h2>
-        <p>By automating these tasks using NLP and machine learning, we have significantly reduced the time and
-            effort required to analyse the survey data. What would take a single person days or even weeks to
-            accomplish manually, we can now achieve in a fraction of the time with greater accuracy and consistency.
-            This enables us to make data-driven decisions swiftly, ensuring responsiveness to our colleagues'
-            feedback and continuous improvement of our workplace environment.</p>
+    <br>
+    <h2>Final Output: Connecting the Dots</h2>
+    <p>We added a new column to our dataset to indicate related keywords or phrases for each comment. Finally,
+        we saved the processed data, including clusters and related terms, to a CSV file for further analysis.
+    </p>
 
-        <p>Feel free to dive into the provided script, adjust it, and discover what insights you can uncover from
-            your own data. Stay curious and continue exploring the wonders of data science!</p>
+    <br>
+    <h2>Conclusion</h2>
+    <p>In conclusion, we have explored the application of TF-IDF, stemming, lemmatisation, and clustering to
+        derive meaningful patterns from feedback data. This process not only organises vast amounts of text but
+        also provides valuable insights that can drive decision-making.</p>
 
-        <br>
-        <h2>Curious about the Python Scripting?</h2>
-        <p>Have a cheeky look below! Yeah it's very detailed but there may be some who like to do a bit of a
-            teardown. Enjoy.</p>
-        <p>As a final note, please keep in mind that there is no sensitive data involved in this python script, as
-            it handles the data agnostically. Furthermore, we have taken steps to ensure there are no deaggregated
-            or sensitive datapoints in this article. Many thanks</p>
-        
-        <!-- Embed the Gist -->
-        <script src="https://gist.github.com/squigglykip/f66cca44c4ff13c5cfab22e43baef07f.js"></script>
-        <noscript>
-            <p>This content requires JavaScript to be enabled. Please enable JavaScript to view the embedded Gist.</p>
-            <p>Alternatively, you can view the Gist directly at: <a href="https://gist.github.com/squigglykip/f66cca44c4ff13c5cfab22e43baef07f" target="_blank">https://gist.github.com/squigglykip/f66cca44c4ff13c5cfab22e43baef07f</a></p>
-        </noscript>
+    <br>
+    <h2>Achievements</h2>
+    <p><strong>Automated Keyword Extraction:</strong> We utilised TF-IDF to automatically extract and weight
+        important keywords and phrases from the survey responses. This enabled us to identify terms that are
+        particularly significant within the context of our dataset.</p>
 
-    </section>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            MathJax.typeset();
-        });
-    </script>
-</body>
-</html>
+    <p><strong>High-Dimensional Document Clustering:</strong> Using k-means clustering, a powerful machine
+        learning algorithm, we grouped the survey responses into distinct clusters based on content similarity.
+        This clustering reveals underlying themes and patterns in the feedback, providing a clear, organised
+        view of the data.</p>
+
+    <br>
+    <h2>Technical Impressions</h2>
+    <p><strong>Advanced Analytics:</strong> By employing TF-IDF and k-means clustering, we applied sophisticated
+        algorithms that surpass simple keyword searches. These methods ensure that the most relevant and
+        impactful phrases are highlighted, offering a deeper understanding of the feedback.</p>
+
+    <p><strong>High-Dimensional Space:</strong> Each document is represented as a vector in a high-dimensional
+        space, with each dimension corresponding to a term in our corpus. The k-means algorithm navigates this
+        complex space to identify clusters of closely related documents. This involves calculating the Euclidean
+        distance between document vectors in this multi-dimensional space to determine their similarity.</p>
+
+    <br>
+    <h2>Effort Comparison</h2>
+    <p>To put this into perspective, imagine attempting this analysis manually in Excel:</p>
+    <ul>
+        <li><strong>Data Preparation:</strong> A single individual would need to meticulously clean and
+            preprocess each survey response, ensuring text format consistency. This alone would be a monumental
+            task.</li>
+        <li><strong>Keyword Identification:</strong> Manually identifying and weighting keywords in each
+            document would require reading through every response, noting the frequency of each term, and then
+            calculating its relative importance.</li>
+        <li><strong>Manual Clustering:</strong> Grouping similar documents based on content would involve
+            comparing each survey response against every other response, assessing similarity, and then
+            organising them into clusters. This process would be extraordinarily time-consuming and prone to
+            errors.</li>
+    </ul>
+
+    <br>
+    <h2>Conclusion</h2>
+    <p>By automating these tasks using NLP and machine learning, we have significantly reduced the time and
+        effort required to analyse the survey data. What would take a single person days or even weeks to
+        accomplish manually, we can now achieve in a fraction of the time with greater accuracy and consistency.
+        This enables us to make data-driven decisions swiftly, ensuring responsiveness to our colleagues'
+        feedback and continuous improvement of our workplace environment.</p>
+
+    <p>Feel free to dive into the provided script, adjust it, and discover what insights you can uncover from
+        your own data. Stay curious and continue exploring the wonders of data science!</p>
+
+    <br>
+    <h2>Curious about the Python Scripting?</h2>
+    <p>Have a cheeky look below! Yeah it's very detailed but there may be some who like to do a bit of a
+        teardown. Enjoy.</p>
+    <p>As a final note, please keep in mind that there is no sensitive data involved in this python script, as
+        it handles the data agnostically. Furthermore, we have taken steps to ensure there are no deaggregated
+        or sensitive datapoints in this article. Many thanks</p>
+
+    <!-- Embed the Gist -->
+    <script src="https://gist.github.com/squigglykip/f66cca44c4ff13c5cfab22e43baef07f.js"></script>
+    <noscript>
+        <p>This content requires JavaScript to be enabled. Please enable JavaScript to view the embedded Gist.</p>
+        <p>Alternatively, you can view the Gist directly at: <a
+                href="https://gist.github.com/squigglykip/f66cca44c4ff13c5cfab22e43baef07f"
+                target="_blank">https://gist.github.com/squigglykip/f66cca44c4ff13c5cfab22e43baef07f</a></p>
+    </noscript>
+
+    <link rel="stylesheet" href="../css/styles.css">

@@ -7,6 +7,7 @@ body {
     background-color: #fff; /* White background */
     display: flex;
     text-transform: lowercase; /* All text lowercase */
+    flex-direction: column; /* Ensure body content stacks vertically */
 }
 
 header {
@@ -50,7 +51,7 @@ h3 {
 nav {
     background-color: #fff; /* White background */
     padding: 1rem;
-    width: 200px;
+    width: 220px;
     height: 100vh;
     position: fixed;
     top: 60px; /* Adjust for header height */
@@ -97,11 +98,16 @@ nav ul li a {
 }
 
 main {
-    margin-left: 220px; /* Adjust for nav width */
+    margin-left: 240px; /* Adjust for nav width */
     padding: 2rem;
     margin-top: 60px; /* Adjust for header height */
-    width: calc(100% - 220px);
+    width: calc(100% - 240px);
+    max-width: 1200px; /* Set a maximum width for the main content */
+    overflow-wrap: break-word; /* Ensure text wraps within the container */
+    word-wrap: break-word; /* Ensure text wraps within the container */
+    word-break: break-word; /* Ensure text wraps within the container */
     transition: margin-left 0.3s; /* Smooth transition for margin */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 section {
@@ -111,6 +117,20 @@ section {
 p {
     font-family: 'Open Sans', sans-serif; /* Secondary font */
     font-size: 0.9rem; /* Reduced font size */
+    overflow-wrap: break-word; /* Ensure text wraps within the container */
+    word-wrap: break-word; /* Ensure text wraps within the container */
+    word-break: break-word; /* Ensure text wraps within the container */
+}
+
+/* Styling for images */
+img {
+    max-width: 50%; /* Ensure images do not exceed the width of their container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove bottom space */
+    margin: 1rem auto; /* Center images and add margin */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Add rounded corners */
+    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 /* Media Queries for Responsiveness */
@@ -156,6 +176,7 @@ p {
         margin-left: 0;
         margin-top: 1rem;
         width: 100%;
+        padding: 1rem; /* Add padding for smaller screens */
     }
 }
 
