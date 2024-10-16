@@ -26,6 +26,16 @@
         loadContent(location.pathname);
     }
 
+    function setActiveNavItem(url) {
+        const navItems = document.querySelectorAll('nav ul li a');
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === url || (url === 'index.html' && item.getAttribute('href') === 'index.html')) {
+                item.classList.add('active');
+            }
+        });
+    }
+
     async function loadContent(url) {
         try {
             const basePath = '/kipjordan.github.io/';
@@ -52,7 +62,7 @@
             } else {
                 newContent = doc.body.innerHTML;
             }
-            if (newContent) {
+            if (newContent && newContent.trim() !== '') {
                 const main = document.querySelector('main');
                 main.innerHTML = newContent;
                 
@@ -63,6 +73,9 @@
                         document.head.appendChild(link.cloneNode(true));
                     }
                 });
+
+                // Set active nav item
+                setActiveNavItem(url);
             } else {
                 throw new Error('No content found in the loaded HTML');
             }
@@ -92,7 +105,7 @@
     }
 
     function reinitializeScripts() {
-        if (typeof MathJax !== 'undefined') {
+        if (typeof MathJax !== 'undefined' && typeof MathJax.typeset === 'function') {
             MathJax.typeset();
         }
         reinitializeGists();
@@ -113,9 +126,30 @@
         main.innerHTML = `<h2>Error</h2><p>There was an error loading the content: ${error.message}. Please try again later.</p>`;
     }
 
-    document.querySelector('main').addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') {
-            // Your existing handleNavigation logic here
-        }
-    });
+    function handleFadeIn() {
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+
+    function addFadeInClass() {
+        const paragraphs = document.querySelectorAll('main p');
+        paragraphs.forEach(p => {
+            if (!p.classList.contains('fade-in')) {
+                p.classList.add('fade-in');
+            }
+        });
+    }
+
+    addFadeInClass();
+    handleFadeIn();
 })();

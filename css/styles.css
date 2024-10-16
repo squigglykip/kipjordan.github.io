@@ -79,6 +79,30 @@ nav ul li a {
     text-decoration: none;
     font-family: 'Space Mono', monospace; /* Primary font */
     font-size: 0.9rem; /* Reduced font size */
+    position: relative;
+    transition: transform 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #111;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav ul li a.active {
+    transform: translateX(10px);
+    padding-left: 5px;
+}
+
+nav ul li a.active::after {
+    transform: scaleX(1);
 }
 
 .sub-nav {
@@ -233,4 +257,13 @@ button:hover {
 
 .project-card h3 {
     text-align: left; /* Ensure headers are also left-aligned */
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-in.visible {
+    opacity: 1;
 }
